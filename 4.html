@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>04</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+<div id="app">
+    v-once 只绑定一次
+
+    v-model 双向绑定
+
+    {{msg}} <br>
+    <input type="text" v-model="input">
+    <input type="text" v-once="input2"><br>
+    {{input}} <br>
+    {{input2}} <br>
+</div>
+<script>
+    var app = new Vue({
+        el:'#app',
+        data:{
+            msg:'hello word',
+            input:'',
+            input2:'只绑定一次，不动了'
+        }
+    })
+</script>
+</body>
+</html>
