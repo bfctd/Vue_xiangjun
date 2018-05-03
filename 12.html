@@ -6,12 +6,19 @@
     <script src="vue.js"></script>
 </head>
 <body>
+<style>
+    .de{
+        text-decoration: line-through;
+    }
+</style>
 <div id="app">
     <h1>{{msg}}</h1>
 
     <ul>
         <li v-for="(v,i) in ls">
-            {{v.t}}
+            <span :class="!v.status?'de':''">{{v.t}}</span><br>
+            <button v-if="v.status" @click="changeStatus(v)">delete</button>
+            <button v-else @click="changeStatus(v)">return</button>
         </li>
     </ul>
 </div>
@@ -19,7 +26,7 @@
     var app = new Vue({
         el: '#app',
         data: {
-            msg: 'hello word',
+            msg: 'hello world',
             ls: [
                 {t: 'zhaobo', status: 1},
                 {t: 'yuanhuan', status: 1},
@@ -27,6 +34,11 @@
                 {t: 'yantao', status: 1},
                 {t: 'zhangqiang', status: 1},
             ]
+        },
+        methods:{
+            changeStatus(v){
+                v.status=!v.status;
+            }
         }
     })
 </script>
