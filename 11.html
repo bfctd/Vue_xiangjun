@@ -6,8 +6,20 @@
     <script src="vue.js"></script>
 </head>
 <body>
+<style>
+    .color {
+        color: red;
+    }
+    .font{
+        font-size: 200px;
+    }
+</style>
 <div id="app">
-    <h1>{{msg}}</h1>
+    使用：class 不会把原有的 class删掉
+    <hr>
+    ['color',{'font':true}]
+
+    <h1 :class="['color',{'font':true}]">{{msg}}</h1>
 </div>
 <script>
     var app = new Vue({

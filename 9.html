@@ -2,18 +2,27 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>01</title>
+    <title>9</title>
     <script src="vue.js"></script>
 </head>
 <body>
 <div id="app">
+    watch 属性   监听
+
+
     <h1>{{msg}}</h1>
+    <input type="text" v-model="msg">
 </div>
 <script>
     var app = new Vue({
         el: '#app',
         data: {
             msg: 'hello word',
+        },
+        watch: {
+            msg: function (newV) {
+                console.log(newV);
+            }
         }
     })
 </script>

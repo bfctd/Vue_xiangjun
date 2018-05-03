@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>06</title>
+    <script src="vue.js"></script>
+    <style>
+        .h1{
+            color: red;
+        }
+        .h2{
+            color: green;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    {{msg}}
+    <h1></h1>
+    <h2 :class="'h'+num"> hehehe </h2>
+    <input type="text" v-model="num">
+    <br>
+    <input type="radio" value="1" v-model="num">
+    <input type="radio" value="2" v-model="num">
+</div>
+<script>
+    var app = new Vue({
+        el:'#app',
+        data:{
+            msg:'hello word',
+            num:'1'
+        }
+    })
+
+
+</script>
+</body>
+</html>

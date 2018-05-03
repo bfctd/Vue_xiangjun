@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>7</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+<div id="app">
+    {{msg}}
+
+    <code>
+        <pre>
+            {s}
+
+            computed:{
+                s:function(){
+
+                }
+            }
+        </pre>
+    </code>
+
+
+    <h1>{{n1}}{{n2}}</h1>
+    <input type="text" v-model="n1"> +
+    <input type="text" v-model="n2">={{sum}}<br>
+</div>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            msg: '计算属性',
+            n1: '1',
+            n2: '2'
+        },
+        computed: {
+            sum() {
+                return Number(this.n1) + parseInt(this.n2);
+            }
+        }
+    })
+</script>
+</body>
+</html>

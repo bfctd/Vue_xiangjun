@@ -7,15 +7,22 @@
 </head>
 <body>
 <div id="app">
-    <h1>{{msg}}</h1>
+    {{msg}}
+
+    v-html
+
+    <h1 v-text="msg"></h1>
+    <h2 v-html="msg"></h2>
 </div>
 <script>
     var app = new Vue({
-        el: '#app',
-        data: {
-            msg: 'hello word',
+        el:'#app',
+        data:{
+            msg:'hello word'
         }
     })
+
+
 </script>
 </body>
 </html>
