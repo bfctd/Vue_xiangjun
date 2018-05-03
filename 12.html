@@ -8,12 +8,25 @@
 <body>
 <div id="app">
     <h1>{{msg}}</h1>
+
+    <ul>
+        <li v-for="(v,i) in ls">
+            {{i.t}}
+        </li>
+    </ul>
 </div>
 <script>
     var app = new Vue({
         el: '#app',
         data: {
             msg: 'hello word',
+            ls: [
+                {t: 'zhaobo', status: 1},
+                {t: 'yuanhuan', status: 1},
+                {t: 'yujun', status: 1},
+                {t: 'yantao', status: 1},
+                {t: 'zhangqiang', status: 1},
+            ]
         }
     })
 </script>
