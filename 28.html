@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>01</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <h1>{{msg}}</h1>
+    <h2 @dblclick="affair1">双击</h2>
+    <h2 @contextmenu="affair2($event)">取消默认右键行为 事件：contextmenu</h2>
+    <a href="http://www.baidu.com" @click.prevent="affair3">取消链接默认行为</a>
+    <h2 :style="'border:red 1px solid'" @click="dialog =!dialog" v-show="dialog">
+        <br><input @click.stop="" type="text" value="stop 阻止冒泡"><br><br>
+    </h2>
+    <b>事件捕获 capture</b>
+    <h2 :style="'border:green 1px solid'" @click.self="dialog =!dialog" v-show="dialog">
+        <br><input type="text" value="self"><br><br>
+    </h2>
+    <a style="color:blue;cursor: pointer;" @click.once="affair5($event)">
+        once 只执行一次(链式修饰符只起效一次)
+    </a>
+    <h2>
+        <a :href="link.url" :target="link.target" @click.once="affair6">
+            once
+        </a>
+    </h2>
+</div>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            msg: '事件',
+            dialog: true,
+            link: {
+                url: 'http://www.baidu.com',
+                target: '_blank'
+            },
+        },
+        methods: {
+            affair1() {
+                console.log(1);
+            },
+            affair2(event) {
+                console.log(1);
+                event.preventDefault()
+            },
+            affair3() {
+                console.log(1);
+            },
+            affair4() {
+                console.log(1);
+            },
+            affair5(e) {
+                window.open("http://www.baidu.com");
+            },
+            affair6() {
+                this.link = '';
+            },
+        }
+    })
+</script>
+</body>
+</html>

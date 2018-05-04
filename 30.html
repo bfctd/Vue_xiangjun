@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>30</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <h1>{{msg}}</h1>
+    <input @keydown="affair1($event)" placeholder="检测键盘值 keyCode">
+    <h2 @click.middle="affair2">鼠标中间按键 click.middle</h2>
+    <a href="http://www.baidu.com" @click.right="affair3">鼠标右键类似 contextmenu</a>
+    <textarea @mousewheel.prevent="affair4" @DOMMouseScroll="affair4" cols="30" rows="10" value="">
+        阻止了默认行为，
+        mousewheel，
+        火狐至今未支持（相当新的浏览器了）
+        vue也没有实现该兼容
+
+好打发士大夫好打发士大夫好打发士大夫好打发士大夫好打发士大夫好打发士大夫好打发士大夫好打发士大夫好打发士大夫好打发士大夫好打发士大夫好打发士大夫好打发士大夫好打发士大夫好打发士大夫好打发士大夫好打发士大夫好打发士大夫好打发士大夫好打发士大夫好打发士大夫好打发士大夫好打发士大夫好打发士大夫好打发士大夫好打发士大夫好打发士大夫好打发士大夫好打发士大夫好打发士大夫好打发士大夫好打发士大夫好打发士大夫好打发士大夫好打发士大夫好打发士大夫好打发士大夫好打发士大夫好打发士大夫好打发士大夫好打发士大夫好打发士大夫好打发士大夫好打发士大夫好打发士大夫好打发士大夫好打发士大夫好打发士大夫好打发士大夫好打发士大夫好打发士大夫好打发士大夫好打发士大夫好打发士大夫好打发士大夫好打发士大夫好打发士大夫好打发士大夫
+    </textarea>
+    <h2 :style="'border:green 1px solid'">
+        <br><input type="text" value="self"><br><br>
+    </h2>
+    <a style="color:blue;cursor: pointer;" @click.once="affair5($event)">
+        once 只执行一次(链式修饰符只起效一次)
+    </a>
+    <h2>
+        <a @click.once="affair6">
+            once
+        </a>
+    </h2>
+</div>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            msg: '键盘事件',
+        },
+        methods: {
+            affair1(e) {
+                console.log(e.keyCode);
+            },
+            affair2(event) {
+                alert(1);
+            },
+            affair3() {
+                console.log(1);
+                event.preventDefault()
+            },
+            affair4() {
+                console.log(1);
+            },
+            affair5(e) {
+                window.open("http://www.baidu.com");
+            },
+            affair6() {
+            },
+        }
+    })
+</script>
+</body>
+</html>

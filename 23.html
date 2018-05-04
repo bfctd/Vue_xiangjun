@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>01</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+release 反转 <br>
+<br>
+<br>
+sort 排序 ，接收两个参数<br>
+1 当前值，<br>
+2 下一个值，
+
+
+<div id="app">
+    <h1>{{msg}}</h1>
+    <div class="one" style="display: inline-block">
+        <li v-for="(v,i,k) in data">
+            {{v.id}} -- {{v.con}}
+            <button @click="remove(i)">删除</button>
+        </li>
+    </div>
+    <div class="two" style="display: inline-block;margin-top: 13px;vertical-align: top">
+        <li v-for="(v,i) in (data.length>0)?data.length-1:0" style="list-style: none;">
+            <button @click="alternate(v,i)">交换</button>
+        </li>
+    </div>
+    <hr>
+    <button @click="sore">排序</button>
+    <button @click="reverse">反转</button>
+    <textarea id="" cols="30" rows="10" v-model="news" style="display:block"></textarea>
+    <button @click="newPushData(1)">向后插入</button>
+    <button @click="newPushData(2)">拿掉最后</button>
+    <br><br>
+    <button @click="newPushData(3)">向前插入</button>
+    <button @click="newPushData(4)">拿掉前面</button>
+
+
+</div>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            msg: '增强原生',
+            data: [
+                {id: 2, con: '张 涛'},
+                {id: 4, con: '赵 博'},
+                {id: 3, con: '谢 宗'},
+                {id: 1, con: '汪 龙'},
+                {id: 6, con: '赵 郊'},
+                {id: 5, con: '李 凤'},
+            ],
+            dataHelp: [],
+            news: '',
+        },
+        methods: {
+            sore() {
+                this.data.sort((i, next) => {
+                    return i.id > next.id
+                })
+            },
+            reverse() {
+                this.data.reverse();
+            },
+            remove(i) {
+                this.data.splice(i, 1);
+            },
+            alternate(v, i) {
+                this.dataHelp.splice(0, 1, {id: this.data[i].id, con: this.data[i].con});
+                this.data.splice(i, 1, {id: this.data[i + 1].id, con: this.data[i + 1].con});
+                this.data.splice(i + 1, 1, this.dataHelp[0]);
+            },
+            newPushData(type) {
+                switch (type) {
+                    case 1 :
+                        this.data.push({con: this.news});
+                        this.news = '';
+                        return;
+                    case 2:
+                        this.data.pop();
+                        return;
+                    case 3:
+                        this.data.unshift({con: this.news});
+                        this.news = '';
+                        return;
+                    case 4:
+                        this.data.shift();
+                        return;
+                }
+            },
+        },
+    })
+</script>
+</body>
+</html>

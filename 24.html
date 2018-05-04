@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>24</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <h1>{{msg}}</h1>
+    <input type="text" @keyUp.enter="serach" v-model="serachCont">
+    <button @click="serach">搜索</button>
+
+    <p v-if="is_serachData">{{serachData}}</p>
+</div>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            msg: 'filter,变异的过滤方法',
+            data: ['wo', 'w', 'x', 'w'],
+            serachCont: '',
+            is_serachData: false,
+        },
+        methods: {
+            serach() {
+                if (this.serachData.length != 0 && this.serachCont != '') {
+                    this.is_serachData = true;
+                } else {
+                    this.is_serachData = false;
+                }
+            }
+        },
+        computed: {
+            serachData() {
+                const self = this;
+                return this.data.filter(function (item) {
+                    let reg = new RegExp(self.serachCont, 'i');
+                    return reg.test(item);
+                })
+            }
+        }
+    })
+</script>
+</body>
+</html>

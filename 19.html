@@ -2,19 +2,58 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>01</title>
+    <title>09</title>
     <script src="vue.js"></script>
 </head>
 <body>
+记住 computed 没有s<br>
+
+filter 过滤数组，接收三个参数
+1循环到当前的item
+2当前索引
+3数组自己
+
 <div id="app">
     <h1>{{msg}}</h1>
+    <!--{{filterData}}-->
+    <select name="" id="" v-model="select">
+        <option value="all">all</option>
+        <option value="男">男</option>
+        <option value="女">女</option>
+    </select>
+    <li v-for="v in filterData">
+        {{v.t}} - {{v.sex}}
+    </li>
 </div>
 <script>
     var app = new Vue({
         el: '#app',
         data: {
-            msg: 'hello word',
-        }
+            msg: '过滤',
+            select: 'all',
+            data: [
+                {t: '张涛', sex: '男'},
+                {t: '赵博', sex: '男'},
+                {t: '谢宗生', sex: '男'},
+                {t: '牛婷', sex: '女'},
+                {t: '王希雅', sex: '女'},
+                {t: '张帅', sex: '男'},
+            ]
+        },
+        computed: {
+            filterData: function () {
+                if (this.select != 'all') {
+                    return this.data.filter((item, index, self) => {
+                        console.log(index + '-' + self)
+                        return item.sex == this.select
+                    })
+                }
+                else {
+                    return this.data;
+                }
+            }
+        },
+        watch: {}
     })
 </script>
 </body>

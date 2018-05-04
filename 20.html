@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>01</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+v-for 循环对象时候 <br>
+1 当前的 值value <br>
+<br>
+2 属性名 <br>
+3 索引 <br>
+
+<div id="app">
+    <h1>{{msg}}</h1>
+    <li v-for="(v,i,k) in data">
+        {{v.con}}
+    </li>
+
+    <textarea id="" cols="30" rows="10" v-model="news"></textarea>
+
+    <button @click="newPushData">push</button>
+</div>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            msg: 'push 增强原生',
+            data: [
+                {con: '哈哈哈'},
+                {con: '嘻嘻嘻'}
+            ],
+            news: '',
+        },
+        methods: {
+            newPushData() {
+                this.data.push({con: this.news});
+                this.news='';
+            },
+        },
+    })
+</script>
+</body>
+</html>
