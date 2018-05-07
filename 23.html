@@ -75,14 +75,14 @@ sort 排序 ，接收两个参数<br>
             newPushData(type) {
                 switch (type) {
                     case 1 :
-                        this.data.push({con: this.news});
+                        this.data.push({id: this.data.length + 1, con: this.news});
                         this.news = '';
                         return;
                     case 2:
                         this.data.pop();
                         return;
                     case 3:
-                        this.data.unshift({con: this.news});
+                        this.data.unshift({id: this.data.length + 1, con: this.news});
                         this.news = '';
                         return;
                     case 4:

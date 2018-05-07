@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>40</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <h1>{{msg}}</h1>
+    <hr>
+    <compon></compon>
+</div>
+
+<script type="text/x-template" id="compon">
+    <div>
+        <h2>
+            <span v-for="v in ls2">{{v.title}}</span>
+        </h2>
+    </div>
+</script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        components: {
+            compon: {
+                template: "#compon",
+                props: {
+                    ls2: {
+                        type: [Array],
+                        default() {
+                            return [
+                                {title: "这是数组对象"},
+                                {title: "传递数组对象"}
+                            ]
+                        }
+                    }
+                },
+                data() {
+                    return {}
+                }
+            }
+        },
+        data: {
+            msg: '组件验证，默认值',
+            ls: [
+                {title: 'zhang'},
+                {title: 'xie'},
+                {title: 'li'},
+                {title: 'sun'},
+            ]
+        }
+    })
+</script>
+</body>
+</html>

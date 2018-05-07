@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>37</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+v-model.number="phone" <b>输入框返回的数字类型的值</b>
+<br>
+<br>
+<br>
+.lazy <b>鼠标离开时才更新绑定的值 美其名曰:懒加载 lazy</b>
+.trim <b>删除空白</b>
+<div id="app">
+    <h1>{{msg}}</h1>
+    <h2><input type="number" v-model.number.lazy.trim="phone"></h2>
+</div>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            msg: 'input修饰符',
+            phone: ''
+        },
+        watch: {
+            phone(n) {
+                console.log(typeof n);
+            }
+        }
+    })
+</script>
+</body>
+</html>

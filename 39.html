@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>01</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+<textarea name="" id="" cols="30" rows="10">
+</textarea>
+
+<script type="text/x-template" id="templ">
+    <div>
+        <h2>{{head1}}</h2>
+    </div>
+</script>
+<div id="app">
+    <h1>{{msg}}</h1>
+    <br>
+    <br>
+    <br>
+    <br>
+    <head1></head1>
+    <head1></head1>
+</div>
+<script>
+    var head1 = {
+        template: "#templ",
+        data() {
+            return {
+                head1: '汪龙是傻逼a'
+            }
+        }
+    }
+
+    var app = new Vue({
+        el: '#app',
+        data: {msg: '组件'},
+        components: {head1}
+    })
+</script>
+</body>
+</html>

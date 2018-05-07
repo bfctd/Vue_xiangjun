@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>01</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+<textarea name="" id="" cols="30" rows="10">
+    说明：在模板里面的template的data属性是一个属性方法，需要将data里面所用到的数据都return出来
+</textarea>
+
+
+<div id="app">
+    <h1>{{msg}}</h1>
+    <br>
+    <br>
+    <br>
+    <br>
+    <parent></parent>
+    <head1></head1>
+</div>
+<script>
+    Vue.component('parent', {
+        template: '<h2>{{par}}</h2>',
+        data: function () {
+            return {
+                par: '我是父组件'
+            }
+        }
+    })
+
+    var head1 = {
+        template: "<h2>{{templ}}</h2>", data() {
+            return {templ: '组件的'}
+        }
+    }
+
+    var app = new Vue({
+        el: '#app',
+        data: {msg: '组件'},
+        components: {head1}
+    })
+</script>
+</body>
+</html>
