@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>42</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <h1>{{msg}}</h1>
+
+    <sole @count="count"></sole>
+    <h1>总价：{{num}}</h1>
+</div>
+
+<script type="text/x-template" id="sole">
+    <div>
+        <input type="text" v-model="input">
+    </div>
+</script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        components: {
+            sole: {
+                template: "#sole",
+                data() {
+                    return {
+                        alone: 1,
+                        input: 1
+                    }
+                },
+                watch: {
+                    input(val) {
+                        this.$emit('count')
+                    }
+                }
+            }
+        },
+        //钩子
+        mounted() {
+        },
+        data: {
+            msg: '子组件唤起父组件',
+            num: 0
+        },
+        methods: {
+            count() {
+                this.num++;
+            }
+        }
+    });
+</script>
+
+</body>
+</html>

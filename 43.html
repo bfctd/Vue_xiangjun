@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>43</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <h1>{{msg}}</h1>
+    <hr>
+    <sole :ls.asyc="ls"></sole>
+    <hr>
+    <h1>总价：{{computedPrice}}</h1>
+</div>
+
+<script type="text/x-template" id="sole">
+    <div>
+        <div v-for="v in ls">
+            <span>{{v.title}}</span>
+            <span>{{v.price}}</span>
+            <input type="text" v-model.number.trim="v.num">
+        </div>
+    </div>
+</script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        components: {
+            sole: {
+                template: "#sole",
+                props: ["ls"],
+                data() {
+                    return {
+                        alone: 1
+                    }
+                },
+                methods: {}
+            }
+        },
+        //钩子
+        mounted() {
+
+        },
+        data: {
+            msg: '子组件唤起父组件',
+            ls: [
+                {title: "hahah", price: 100, num: 1},
+                {title: "ssh", price: 150, num: 4},
+                {title: "niha", price: 120, num: 1},
+            ],
+        },
+        methods: {},
+        computed: {
+            computedPrice() {
+                let sum = 0;
+                this.ls.forEach((v) => {
+                    sum += v.price * v.num;
+                })
+                return sum;
+            }
+        }
+    })
+</script>
+
+</body>
+</html>
