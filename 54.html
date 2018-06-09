@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>54 router使用</title>
+</head>
+<body>
+<div id="app">
+    <router-link to="/one">aaaaaaaaaaaaaa
+    </router-link>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <router-link to="/two">bbbbbbbbbbbbb
+    </router-link>
+    <hr>
+    <router-view></router-view>
+</div>
+<script src="vue.js"></script>
+<script src="vue-router.js"></script>
+</body>
+<script>
+    const one = {template: "<h1>one</h1>"};
+    const two = {template: "<h1>two</h1>"};
+
+
+    var r = new VueRouter({
+        routes: [
+            {path: '/one', component: one},
+            {path: '/two', component: two}
+        ]
+    })
+
+    var app = new Vue({
+        el: "#app",
+        router: r
+    });
+</script>
+</html>
