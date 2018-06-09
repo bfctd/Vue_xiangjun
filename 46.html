@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>01</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <h1>{{msg}}</h1>
+    <hr>
+
+
+    <div :is="type"></div>
+    <input type="text" v-model="type">
+</div>
+<script type="text/x-template" id="slotapart">
+    <div>
+        选择的是第一个模板
+    </div>
+</script>
+<script type="text/x-template" id="scope2">
+    <div>
+        好好
+    </div>
+</script>
+<script>
+
+    var slotapart = {
+        template: "#slotapart",
+    };
+    var scope2 = {
+        template: "#scope2",
+    }
+
+    var app = new Vue({
+        el: '#app',
+        components: {
+            slotapart, scope2
+        },
+        data: {
+            msg: '控制选用哪个模板  :is',
+            type: 'scope2',
+        }
+    })
+</script>
+</body>
+</html>

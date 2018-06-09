@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>01</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <h1>{{msg}}</h1>
+    <hr>
+
+    <slotapart :news="news">
+        <template scope="v">
+            <ul>
+                <li>{{v.list.title}}</li>
+            </ul>
+        </template>
+    </slotapart>
+</div>
+<script type="text/x-template" id="slotapart">
+    <div>
+        <slot v-for="v in news" :list="v"></slot>
+    </div>
+</script>
+<script>
+
+    var slotapart = {
+        template: "#slotapart",
+        props: ['news'],
+    }
+
+    var app = new Vue({
+        el: '#app',
+        components: {
+            slotapart
+        },
+        data: {
+            msg: '父组件中定义子组件dom,但是子组件里面的逻辑还是由子组件控制 scope',
+            news: [
+                {title: 'a', content: 'dsfsdsf'},
+                {title: 'b', content: 'bbbbbb'},
+            ]
+        }
+    })
+</script>
+</body>
+</html>

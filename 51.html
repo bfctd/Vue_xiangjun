@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>01</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <h1>{{msg}}</h1>
+    <hr>
+
+    <span v-color>hahaha</span>
+    <input type="text" v-model="mesh" v-getfocus>
+</div>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            msg: '自定义指令',
+            mesh: 'green'
+        },
+        directives: {
+            getfocus: {
+                bind(el, bind) {
+                    console.log(bind);
+                },
+                update() {
+
+                },
+                inserted(el) {
+                    el.focus();
+                }
+            },
+            color(el, bind) {
+                if (!bind.value) {
+                    // el.style.color = 'red'
+                }
+                else {
+                    el.style.color = 'red';
+                }
+                console.log(bind);
+                console.log(bind);
+            }
+        }
+    })
+</script>
+</body>
+</html>

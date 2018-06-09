@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>43</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <h1>{{msg}}</h1>
+    <hr>
+    <sole>
+        <h1 slot="one">dsdfsdf</h1>
+    </sole>
+    <hr>
+</div>
+
+<script type="text/x-template" id="sole">
+    <div>
+        <slot name="one">one</slot>
+        <slot name="two">two</slot>
+    </div>
+</script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        components: {
+            sole: {
+                template: "#sole",
+                props: ["ls"],
+                data() {
+                    return {
+                        alone: 1
+                    }
+                },
+                methods: {}
+            }
+        },
+        //钩子
+        mounted() {
+
+        },
+        data: {
+            msg: '组件分发',
+        },
+        methods: {},
+        computed: {}
+    })
+</script>
+
+</body>
+</html>
